@@ -55,4 +55,37 @@ describe('tests', () => {
 
         expect(getMoney(testObject)).toBe('1 €');
     })
+
+    it('Single item euro with reduction tenth', () => {
+        const testObject = {
+            prices: [10],
+            quantities: [1],
+            reduction: 'TENTH',
+            country: 'FR'
+        }
+
+        expect(getMoney(testObject)).toBe('9 €');
+    })
+
+    it('Single item pound', () => {
+        const testObject = {
+            prices: [2],
+            quantities: [1],
+            reduction: 'STANDARD',
+            country: 'UK'
+        }
+
+        expect(getMoney(testObject)).toBe('4 £');
+    })
+
+    it('Single item dollars', () => {
+        const testObject = {
+            prices: [1],
+            quantities: [1],
+            reduction: 'STANDARD',
+            country: 'US'
+        }
+
+        expect(getMoney(testObject)).toBe('3 $');
+    })
 })
