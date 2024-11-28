@@ -134,4 +134,14 @@ describe('tests', () => {
         expect(getMoney(testObject)).toBe('5 €');
     })
 
+    it('Single item euro with reduction special', () => {
+        const testObject = {
+            prices: [10, 10, 10, 10, 10, 10],
+            quantities: [2, 3, 4, 5, 6, 7],
+            reduction: 'SPECIAL',
+            country: 'FR'
+        }
+
+        expect(getMoney(testObject)).toBe('165 €');
+    })
 })

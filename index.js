@@ -11,6 +11,17 @@ const calculateTotal = (prices, quantities) =>
     prices.reduce((total, price, index) => total + price * quantities[index], 0);
 
 const manageReduction = (prices, quantities, reduction) => {
+    if(reduction === 'SPECIAL') {
+        let currentReduction = 0.9;
+
+        prices = prices.map((price) => {
+            let newPrice = price * currentReduction;
+            if(currentReduction > 0.6){
+                currentReduction -= 0.1;
+            }
+            return newPrice;
+        })
+    }
     if(reduction === 'HALF_FIRST') {
         prices = prices.map((price, index) => {
             if(index <= Math.ceil(prices.length/2) -1) return price/2;
