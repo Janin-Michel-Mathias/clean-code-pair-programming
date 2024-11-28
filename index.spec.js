@@ -88,4 +88,50 @@ describe('tests', () => {
 
         expect(getMoney(testObject)).toBe('3 $');
     })
+
+    
+    it('Single item euro with reduction half first', () => {
+        const testObject = {
+            prices: [2, 2],
+            quantities: [1, 1],
+            reduction: 'HALF_FIRST',
+            country: 'FR'
+        }
+
+        expect(getMoney(testObject)).toBe('3 €');
+    })
+
+    it('Single item euro with reduction half first with odd items number', () => {
+        const testObject = {
+            prices: [2, 2, 2],
+            quantities: [1, 1, 1],
+            reduction: 'HALF_FIRST',
+            country: 'FR'
+        }
+
+        expect(getMoney(testObject)).toBe('4 €');
+    })
+
+    it('Single item euro with reduction half last', () => {
+        const testObject = {
+            prices: [2, 2],
+            quantities: [1, 1],
+            reduction: 'HALF_LAST',
+            country: 'FR'
+        }
+
+        expect(getMoney(testObject)).toBe('3 €');
+    })
+
+    it('Single item euro with reduction half last with odd items number', () => {
+        const testObject = {
+            prices: [2, 2, 2],
+            quantities: [1, 1, 1],
+            reduction: 'HALF_LAST',
+            country: 'FR'
+        }
+
+        expect(getMoney(testObject)).toBe('5 €');
+    })
+
 })
